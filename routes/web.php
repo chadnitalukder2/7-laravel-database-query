@@ -60,9 +60,13 @@ Route::get('/', function () {
     dump($result);*/
 /*===================================================================================================================================*/
 
-    $users = DB::table('users')->get();
+    /*$users = DB::table('users')->get();
     $comment = DB::table('comments')->get();
-    dump($users, $comment);
+    dump($users, $comment);*/
+/*===================================================================================================================================*/
+
+    //dump(factory(App\Comment::class, 4)->make());
+    //dump(factory(App\Comment::class, 4)->create());
 
 
     return view('welcome');
