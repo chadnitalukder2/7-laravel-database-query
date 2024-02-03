@@ -67,6 +67,10 @@ Route::get('/', function () {
 
     //dump(factory(App\Comment::class, 4)->make());
     //dump(factory(App\Comment::class, 4)->create());
+/*====================================pluck===============================================================================================*/
+    $users = DB::table('users')->get();
+    $users = DB::table('users')->pluck('email'); //its show only email 
+    dump($users);
 
 
     return view('welcome');
