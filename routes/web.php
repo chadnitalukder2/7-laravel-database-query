@@ -4,19 +4,9 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
-
+/*===================================================================================================================================*/
     /* $user = DB::select('select * from users where id = ?', [2]);
      dump("mysql : ", $user);*/
 
@@ -27,6 +17,7 @@ Route::get('/', function () {
     /*$result = DB::select('select * from users where id = ? and name = ?', [1, 'Vilma 0\'Keefe']);
     $result = DB::select('select * from users where id = :id', ['id' => 1]);*/
 
+/*===================================================================================================================================*/
     //data insert
     /*DB::insert('insert into users (name, email, password) values(?, ?, ?)', ['Inserted1 Name', 'email@fdf.com', 'password']);*/
 
@@ -41,12 +32,33 @@ Route::get('/', function () {
    dump( $deleted);*/
 
    //DB::statement('truncate table users');
-
+/*===================================================================================================================================*/
    //$result = DB::select('select * from users'); //row sql
-   //$result = DB::table('users')->select()->get(); //query builder
-    $result = User::all(); //aluquent orm
-    dump($result);
+   // $result = User::all(); //aluquent orm
 
+   //Transaction
+   /* DB::transaction(function (){
+        //try catch block is not necessary as well as DB:: rollBacke()
+        try{
+            DB::table('users')->delete();
+            $result = DB::table('users')->where('id', 3)->update(['email' => 'none@gmail.com']);
+        
+            if(!$result){
+                throw new \Exception;
+            }
+
+        }catch(\Exception $e){
+            DB::rollBack();
+        }
+
+    }, 5);//optional third argument, how many times a transaction should be readttempted
+
+    //DB::table('users')->where('id', 4)->update(['email' => 'none']);
+    //DB::table('users')->where('id', 3)->update(['email' => 'none@gmail.com']);
+
+    $result = DB::table('users')->select()->get(); //query builder
+    dump($result);*/
+/*===================================================================================================================================*/
 
 
 
