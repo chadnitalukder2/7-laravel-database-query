@@ -67,10 +67,42 @@ Route::get('/', function () {
 
     //dump(factory(App\Comment::class, 4)->make());
     //dump(factory(App\Comment::class, 4)->create());
-/*====================================pluck===============================================================================================*/
-    $users = DB::table('users')->get();
+/*====================================pluck==========================================================================================*/
+    /*$users = DB::table('users')->get();
     $users = DB::table('users')->pluck('email'); //its show only email 
-    dump($users);
+    dump($users);*/
+/*====================================where and first================================================================================*/
+    //first means show only one data similar to condition
+    $user = DB::table('users')->where('name', 'Alejandrin Kohler')->first();
+    dump($user);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     return view('welcome');
